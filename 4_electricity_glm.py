@@ -58,10 +58,12 @@ class MRPriceRegression(MRJob):
 	'''
 		line = line.split(',')
 		if len(line) == 2:
-			yield state, ()
+			price  = line[1]
+			yield state, (price)
 
 		if len(line) == 3:
-			yield state, ()
+			pop = line[2]
+			yield state, (pop)
 
 
 
