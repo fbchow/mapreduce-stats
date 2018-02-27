@@ -26,11 +26,11 @@ Map Reduce Jobs that take in 2 files as input
 
 mapper1
 	takes file1
-	outputs state, price
+	outputs state, price, 'price'
 
 mapper2
 	takes file2
-	outputs state, pop
+	outputs state, pop, 'pop'
 
 '''
 
@@ -46,8 +46,18 @@ class MRPriceRegression(MRJob):
 		yield 'key', ((pop - popmean)*(price-price_mean), 1) 
 
 
-	#def reducer(self, key, line):
+	def reducer(self, key, values): # values = 2 values for each state (price, pop)
+		# problem: how do i know the price is associated with this key, and pop for that key?
+		# sol: put in some flag for the output of mapper1 and mapper2 for price & pop
 
+		for val in values:
+			if val[0] = "price":
+				price = val[1]
+			else:
+				pop = val[1]
+
+		yield state, price, pop 	
+		
 
 if __name__ == '__main__':
 	MRPriceRegression.run() 
