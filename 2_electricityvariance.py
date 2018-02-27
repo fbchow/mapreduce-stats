@@ -10,9 +10,9 @@ class MRElectricityVariance(MRJob):
 		yield 'key', (price, price*price, 1) # add 1 to indicate entity for combiner to count
 
 	def combiner(self, key, some_vals):
-	'''
-	only takes in some of the values associated with the key -- unlike reducer
-	'''
+		'''
+		only takes in some of the values associated with the key -- unlike reducer
+		'''
 	sum = 0
 	count = 0
 	sum_square = 0
