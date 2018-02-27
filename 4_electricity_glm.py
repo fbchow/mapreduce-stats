@@ -31,6 +31,11 @@ mapper1
 mapper2
 	takes file2
 	outputs state, pop, 'pop'
+========
+
+one mapper version
+	tables to join:
+		state, price       state, pop, area
 
 '''
 
@@ -39,11 +44,25 @@ from mrjob.job import MRJob
 class MRPriceRegression(MRJob):
 
 
+#	def mapper(self, _, line):
+#		line = line.split(',')
+#		price = float(line[1])
+#		pop = float(line[2])		
+#		yield 'key', ((pop - popmean)*(price-price_mean), 1) 
+#
+
 	def mapper(self, _, line):
+	'''
+	one mapper
+	python djflsdj.py file1 file2
+	'''
 		line = line.split(',')
-		price = float(line[1])
-		pop = float(line[2])		
-		yield 'key', ((pop - popmean)*(price-price_mean), 1) 
+		if len(line) == 2:
+			yield state, ()
+
+		if len(line) == 3:
+			yield state, ()
+
 
 
 	def reducer(self, key, values): # values = 2 values for each state (price, pop)
