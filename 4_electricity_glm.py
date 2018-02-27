@@ -17,6 +17,21 @@ pipe output to a text file
 write output to a text file
 command line argument to copy small text file to every machine
 
+=================
+
+Map Reduce Jobs that take in 2 files as input
+	aka a join
+
+	set up a separate mapper for each file
+
+mapper1
+	takes file1
+	outputs state, price
+
+mapper2
+	takes file2
+	outputs state, pop
+
 '''
 
 from mrjob.job import MRJob
