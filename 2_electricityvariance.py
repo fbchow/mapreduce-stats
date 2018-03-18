@@ -25,22 +25,20 @@ class MRElectricityVariance(MRJob):
 			sum += val[0]
 			sum_square += val[1]
 			count += val[2]
-		yield "key", (sum, sum_square, count)	
-	
-
-#	def reducer(self, key, values):
-###		values = list(values)	
-##		ex_x = sum(values) / len(values)
-#		
-#		sum = 0
-#		count = 0
-#		sum_square = 0
-#
-#		for val in values:
-#			sum += val[0]
-#			sum_square += val[1]
-#			count += val[2] 
-#                yield "variance is: ", (sum_square/count) - (sum*sum/(count*count))		
-
+		yield "key", (sum, sum_square, count)
+        def reducer(self, key, values):
+                values = list(values)	
+		ex_x = sum(values) / len(values)
+      	
+                sum = 0
+          	count = 0
+          	sum_square = 0
+    
+          	for val in values:
+          		sum += val[0]
+          		sum_square += val[1]
+          		count += val[2] 
+                yield "variance is: ", (sum_square/count) - (sum*sum/(count*count))		
+    
 if __name__ == '__main__':
 	MRElectricityVariance.run()
