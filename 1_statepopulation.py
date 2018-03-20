@@ -18,7 +18,7 @@ class MRStatePopulationStats(MRJob):
 	def reducer(self, key, value):
 		value = list(value)
 		avg = sum(value)/len(value)
-		yield ('avg', round(avg, 3))
+		yield ('avg', avg)
 		yield('min', min(value))
 		yield('max', max(value))
 

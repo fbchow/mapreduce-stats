@@ -41,9 +41,11 @@ one mapper version
 
 from mrjob.job import MRJob
 
-class MRPriceRegression(MRJob):
 
 
+class MRRegression(MRJob):
+    mean_area = 74261.0980392157
+    mean_pop = 4876487.7058823528
 #	def mapper(self, _, line):
 #		line = line.split(',')
 #		price = float(line[1])
@@ -81,6 +83,6 @@ class MRPriceRegression(MRJob):
 		
 
 if __name__ == '__main__':
-	MRPriceRegression.run() 
+	MrRegression.run() 
 
 
