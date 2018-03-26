@@ -1,0 +1,3 @@
+"total_num_colleges"	159
+"num_pub"	70
+"num_priv"	89
